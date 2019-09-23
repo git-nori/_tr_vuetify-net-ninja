@@ -15,8 +15,18 @@
       </v-btn>
     </v-app-bar>
 
-    <v-navigation-drawer app v-model="drawer" class="indigo">
-      <p>test</p>
+    <v-navigation-drawer app v-model="drawer" class="primary">
+      <v-list class="primary">
+        <!-- ':to' => 内部リンクを設定(':href' => 外部リンク) -->
+        <v-list-item v-for="(link, index) in links" :key="index" :to="link.route">
+          <v-list-item-icon>
+            <v-icon class="white--text">{{ link.icon }}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title class="white--text">{{ link.text }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
     </v-navigation-drawer>
   </nav>
 </template>
@@ -25,7 +35,12 @@
 export default {
   data() {
     return {
-      drawer: false
+      drawer: false,
+      links: [
+        { icon: "mdi-view-dashboard", text: "Dashboard", route: "/" },
+        { icon: "mdi-folder", text: "My Projects", route: "/projects" },
+        { icon: "mdi-account", text: "Team", route: "/team" }
+      ]
     };
   }
 };
