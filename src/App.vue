@@ -1,7 +1,8 @@
 <template>
   <v-app class="grey lighten-4">
     <navbar />
-    <v-content>
+    <!-- x方向とbottomに16px(4 * 4px)のmarginを適用 -->
+    <v-content class="mx-4 mb-4">
       <router-view></router-view>
     </v-content>
   </v-app>
