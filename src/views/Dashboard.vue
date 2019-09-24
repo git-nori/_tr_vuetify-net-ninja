@@ -5,6 +5,17 @@
     <!-- y方向に20pxのmarginを適用 -->
     <!-- fluid => containerの幅を横いっぱいに広げる -->
     <v-container class="my-5" fluid>
+      <v-row class="mb-3">
+        <v-btn small text color="grey" @click="sortBy('title')">
+          <v-icon>mdi-folder</v-icon>
+          <span class="captipon text-lowercase ml-1">by project name</span>
+        </v-btn>
+        <v-btn small text color="grey" @click="sortBy('person')">
+          <v-icon>mdi-account</v-icon>
+          <span class="captipon text-lowercase ml-1">by person</span>
+        </v-btn>
+      </v-row>
+
       <v-card flat v-for="(project, index) in projects" :key="index">
         <!-- ``を用いてclassをv-bindする -->
         <v-row :class="`pa-3 project ${project.status}`">
@@ -73,6 +84,11 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    sortBy(prop) {
+      this.projects.sort((a, b) => (a[prop] < b[prop] ? -1 : 1)); //propに応じたソートを行う
+    }
   }
 };
 </script>
