@@ -20,9 +20,11 @@
             <div class="caption grey--text">Due by</div>
             <div>{{ project.due }}</div>
           </v-col>
-          <v-col sm="4" md="2">
-            <div class="caption grey--text">Status</div>
-            <div>{{ project.status }}</div>
+          <!-- v-col内の要素を上下左右中央に配置 -->
+          <v-col sm="4" md="2" class="d-flex align-center justify-center">
+            <div>
+              <v-chip small :class="`${project.status}`">{{ project.status }}</v-chip>
+            </div>
           </v-col>
         </v-row>
         <!-- rowごとに区切り線を設定 -->
@@ -77,12 +79,23 @@ export default {
 
 <style scoped>
 .project.complete {
-  border-left: 4px solid skyblue;
+  border-left: 4px solid lightblue;
 }
 .project.overdue {
-  border-left: 4px solid red;
+  border-left: 4px solid pink;
 }
 .project.ongoing {
-  border-left: 4px solid green;
+  border-left: 4px solid lightseagreen;
+}
+
+/* .v-chip.${project.status}だとbackgroundが上書きされてしまう */
+.theme--light.v-chip.complete {
+  background: lightblue;
+}
+.theme--light.v-chip.overdue {
+  background: pink;
+}
+.theme--light.v-chip.ongoing {
+  background: lightseagreen;
 }
 </style>
