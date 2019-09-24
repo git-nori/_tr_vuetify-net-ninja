@@ -5,15 +5,25 @@
     <!-- y方向に20pxのmarginを適用 -->
     <!-- fluid => containerの幅を横いっぱいに広げる -->
     <v-container class="my-5" fluid>
-      <v-row class="mb-3">
-        <v-btn small text color="grey" @click="sortBy('title')">
-          <v-icon>mdi-folder</v-icon>
-          <span class="captipon text-lowercase ml-1">by project name</span>
-        </v-btn>
-        <v-btn small text color="grey" @click="sortBy('person')">
-          <v-icon>mdi-account</v-icon>
-          <span class="captipon text-lowercase ml-1">by person</span>
-        </v-btn>
+      <v-row justify-start class="mb-3">
+        <v-tooltip top>
+          <template v-slot:activator="{on}">
+            <v-btn small text color="grey" @click="sortBy('title')" v-on="on">
+              <v-icon small left>mdi-folder</v-icon>
+              <span class="caption text-lowercase">By project name</span>
+            </v-btn>
+          </template>
+          <span>Sort by project name</span>
+        </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{on}">
+            <v-btn small text color="grey" @click="sortBy('person')" v-on="on">
+              <v-icon small left>mdi-account</v-icon>
+              <span class="caption text-lowercase">By Person</span>
+            </v-btn>
+          </template>
+          <span>Sort by project author</span>
+        </v-tooltip>
       </v-row>
 
       <v-card flat v-for="(project, index) in projects" :key="index">
