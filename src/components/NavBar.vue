@@ -41,6 +41,13 @@
         </v-col>
       </v-row>
       <span class="d-flex justify-center white--text">Yoshi</span>
+
+      <v-row>
+        <v-col class="d-flex justify-center">
+          <popup />
+        </v-col>
+      </v-row>
+
       <v-list class="primary">
         <!-- ':to' => 内部リンクを設定(':href' => 外部リンク) -->
         <v-list-item v-for="(link, index) in links" :key="index" :to="link.route">
@@ -57,6 +64,7 @@
 </template>
 
 <script>
+import Popup from "./Popup";
 export default {
   data() {
     return {
@@ -67,6 +75,9 @@ export default {
         { icon: "mdi-account", text: "Team", route: "/team" }
       ]
     };
+  },
+  components: {
+    Popup
   }
 };
 </script>
