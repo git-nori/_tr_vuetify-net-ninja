@@ -8,12 +8,25 @@
         <span class="headline text-uppercase">Add a New Project</span>
       </v-card-title>
       <v-card-text>
-        <v-form class="px-3">
-          <v-text-field label="title" prepend-icon="mdi-folder" v-model="title"></v-text-field>
-          <v-textarea label="infomation" prepend-icon="mdi-pencil" v-model="content"></v-textarea>
+        <!-- ref => formを$refsで参照するため -->
+        <v-form class="px-3" ref="form">
+          <v-text-field label="title" prepend-icon="mdi-folder" :rules="inputRules" v-model="title"></v-text-field>
+          <v-textarea
+            label="infomation"
+            prepend-icon="mdi-pencil"
+            :rules="inputRules"
+            v-model="content"
+          ></v-textarea>
           <v-menu>
             <template v-slot:activator="{on}">
-              <v-text-field label="Due date" prepend-icon="mdi-calendar" :value="dueDate" v-on="on"></v-text-field>
+              <v-text-field
+                label="Due date"
+                prepend-icon="mdi-calendar"
+                :value="dueDate"
+                v-on="on"
+                :rules="inputDateRules"
+                required
+              ></v-text-field>
             </template>
             <v-date-picker v-model="dueDate"></v-date-picker>
           </v-menu>
@@ -34,12 +47,16 @@ export default {
     return {
       title: "",
       content: "",
-      dueDate: ""
+      dueDate: "",
+      inputRules: [v => v.length >= 3 || "Minimum length is 3 characters"],
+      inputDateRules: [v => !!v || "Date is required"]
     };
   },
   methods: {
     submit() {
-      console.log(this.title, this.content, this.dueDate);
+      if (this.$refs.form.validate()) {
+        console.log(this.title, this.content, this.dueDate);
+      }
     }
   }
 };
