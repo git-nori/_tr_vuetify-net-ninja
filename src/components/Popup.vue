@@ -74,6 +74,7 @@ export default {
           .then(() => {
             this.loading = false; // loadingを非表示
             this.dialog = false; // dialogを非表示
+            this.$emit("addedProject"); // 親コンポーネント(NavBar.vue)にカスタムイベント(addedProject)を発火 第２引数にはデータを指定することも可能
           });
       }
     }

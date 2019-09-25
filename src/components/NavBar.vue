@@ -1,5 +1,11 @@
 <template>
   <nav>
+    <!-- snackbar -->
+    <v-snackbar v-model="snackbar" :timeout="4000" top color="success">
+      <span>Awesom! You added a new project.</span>
+      <v-btn text color="white" @click="snackbar = false">CLOSE</v-btn>
+    </v-snackbar>
+
     <v-app-bar flat app>
       <v-app-bar-nav-icon class="grey--text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <!-- 文字を大文字にし、文字色をグレーにする -->
@@ -45,7 +51,8 @@
 
         <v-row>
           <v-col class="d-flex justify-center">
-            <popup />
+            <!-- 子コンポーネント(Popup.vue)からのカスタムイベントを受け取る -->
+            <popup @addedProject="snackbar = true" />
           </v-col>
         </v-row>
       </div>
@@ -74,7 +81,8 @@ export default {
         { icon: "mdi-view-dashboard", text: "Dashboard", route: "/" },
         { icon: "mdi-folder", text: "My Projects", route: "/projects" },
         { icon: "mdi-account", text: "Team", route: "/team" }
-      ]
+      ],
+      snackbar: false
     };
   },
   components: {
