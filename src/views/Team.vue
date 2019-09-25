@@ -6,7 +6,11 @@
       <v-row>
         <v-col sm="6" md="4" lg="3" v-for="(person, index) in team" :key="index">
           <v-card class="text-center">
-            <v-responsive class="pt-3">image goes here</v-responsive>
+            <v-responsive class="pt-4">
+              <v-avatar size="75" class="grey lighten-2">
+                <img :src="person.avatar" />
+              </v-avatar>
+            </v-responsive>
             <v-card-text>
               <div class="subheading text--primary">{{ person.name }}</div>
               <div class="grey--text">{{ person.role }}</div>
@@ -29,11 +33,31 @@ export default {
   data() {
     return {
       team: [
-        { name: "The Net Ninja", role: "Web developer" },
-        { name: "Ryu", role: "Graphic designer" },
-        { name: "Chun Li", role: "Web developer" },
-        { name: "Gouken", role: "Social media maverick" },
-        { name: "Yoshi", role: "Sales guru" }
+        {
+          name: "The Net Ninja",
+          role: "Web developer",
+          avatar: "/avator-img/avatar-1.png"
+        },
+        {
+          name: "Ryu",
+          role: "Graphic designer",
+          avatar: "/avator-img/avatar-2.png"
+        },
+        {
+          name: "Chun Li",
+          role: "Web developer",
+          avatar: "/avator-img/avatar-3.png"
+        },
+        {
+          name: "Gouken",
+          role: "Social media maverick",
+          avatar: "/avator-img/avatar-4.png"
+        },
+        {
+          name: "Yoshi",
+          role: "Sales guru",
+          avatar: "/avator-img/avatar-5.png"
+        }
       ]
     };
   }
