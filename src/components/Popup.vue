@@ -5,12 +5,31 @@
     </template>
     <v-card>
       <v-card-title>
-        <h2>Add a New Project</h2>
+        <span class="headline text-uppercase">Add a New Project</span>
       </v-card-title>
+      <v-card-text>
+        <v-form class="px-3">
+          <v-text-field label="title" prepend-icon="mdi-folder" v-model="title"></v-text-field>
+          <v-textarea label="infomation" prepend-icon="mdi-pencil" v-model="content"></v-textarea>
+          <v-btn text small class="mt-3 success" @click="submit">ADD PROJECT</v-btn>
+        </v-form>
+      </v-card-text>
     </v-card>
   </v-dialog>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      title: "",
+      content: ""
+    };
+  },
+  methods: {
+    submit() {
+      console.log(this.title, this.content);
+    }
+  }
+};
 </script>

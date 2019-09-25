@@ -33,21 +33,22 @@
     </v-app-bar>
 
     <v-navigation-drawer app v-model="drawer" class="primary">
-      <v-row>
-        <v-col class="d-flex justify-center mt-5">
-          <v-avatar size="75">
-            <img src="/avator-img/avatar-5.png" />
-          </v-avatar>
-        </v-col>
-      </v-row>
-      <span class="d-flex justify-center white--text">Yoshi</span>
+      <div>
+        <v-row>
+          <v-col class="d-flex justify-center mt-5">
+            <v-avatar size="75">
+              <img src="/avator-img/avatar-5.png" />
+            </v-avatar>
+          </v-col>
+        </v-row>
+        <span class="d-flex justify-center white--text">Yoshi</span>
 
-      <v-row>
-        <v-col class="d-flex justify-center">
-          <popup />
-        </v-col>
-      </v-row>
-
+        <v-row>
+          <v-col class="d-flex justify-center">
+            <popup />
+          </v-col>
+        </v-row>
+      </div>
       <v-list class="primary">
         <!-- ':to' => 内部リンクを設定(':href' => 外部リンク) -->
         <v-list-item v-for="(link, index) in links" :key="index" :to="link.route">
