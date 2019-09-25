@@ -9,6 +9,23 @@
       </v-toolbar-title>
       <!-- v-btnが右寄せになるようにスペースを入れる -->
       <v-spacer></v-spacer>
+
+      <!-- dropdown menu -->
+      <!-- offset-y => 下方向にdropdown menuを表示 -->
+      <v-menu offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn text v-on="on" color="grey">
+            <span>MENU</span>
+            <v-icon right>mdi-chevron-double-down</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item v-for="(link, index) in links" :key="index" :to="link.route">
+            <v-list-item-title class="caption">{{ link.text }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
       <v-btn text color="grey">
         <span>sign out</span>
         <v-icon right>mdi-exit-to-app</v-icon>
